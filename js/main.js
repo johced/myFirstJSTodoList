@@ -50,7 +50,6 @@ function renderHTML() {
 			liElement.className = 'todoLi';
 
 			let checkElement = document.createElement('input');
-			checkElement.id = 'checkBtn';
 			checkElement.type = 'checkbox';
 			checkElement.checked = toDoList[i].checked;
 			checkElement.addEventListener('click', () => {
@@ -58,7 +57,7 @@ function renderHTML() {
 			});
 
 			let removeButton = document.createElement('button');
-			removeButton.id = 'removeBtn';
+			removeButton.className = 'removeBtn';
 			removeButton.setAttribute('aria-label', 'remove todo');
 			removeButton.innerHTML = '<i class="fas fa-times"></i>';
 			removeButton.addEventListener('click', () => {
@@ -66,7 +65,7 @@ function renderHTML() {
 			});
 
 			let sortButton = document.createElement('button');
-			sortButton.id = 'sortBtn';
+			sortButton.className = 'sortBtn';
 			sortButton.setAttribute('aria-label', 'move todo to the top');
 			sortButton.innerHTML = '<i class="fas fa-sort-amount-up"></i>';
 			sortButton.addEventListener('click', () => {

@@ -64,13 +64,13 @@ ul {
 	padding: 5px;
 }
 
-#removeBtn {
+.removeBtn {
 	height: 25px;
 	width: 25px;
 	cursor: pointer;
 }
 
-#sortBtn {
+.sortBtn {
 	height: 25px;
 	width: 30px;
 	cursor: pointer;
