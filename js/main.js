@@ -59,6 +59,7 @@ function renderHTML() {
 
 			let removeButton = document.createElement('button');
 			removeButton.id = 'removeBtn';
+			removeButton.setAttribute('aria-label', 'remove todo');
 			removeButton.innerHTML = '<i class="fas fa-times"></i>';
 			removeButton.addEventListener('click', () => {
 				removeToDo(toDoList[i]);
@@ -66,6 +67,7 @@ function renderHTML() {
 
 			let sortButton = document.createElement('button');
 			sortButton.id = 'sortBtn';
+			sortButton.setAttribute('aria-label', 'move todo to the top');
 			sortButton.innerHTML = '<i class="fas fa-sort-amount-up"></i>';
 			sortButton.addEventListener('click', () => {
 				sortTodo(toDoList[i]);
