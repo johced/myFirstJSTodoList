@@ -1,6 +1,7 @@
 # My first Java Script - ToDo-List
 
 _No focus on design in this task._
+Also in this school assignment we are learning how to use Github. I created branch "refactoring" and made changes locally in that branch. Pushed it and merged it directly to master branch. In larger projects I am aware of using "develop" branch, and not go directly to master. But this is practice! :-)
 
 ## Functionality:
 
@@ -18,6 +19,11 @@ _No focus on design in this task._
 - let not var
 - describing variables - no commenting should be necessary
 - minimal code in window onload (call functions instead)
+
+## Lighthouse
+
+We learned about Lighthouse: 100% Performance. 65% Accessibility. 100% Best Practices. 91% Seo.
+I used the information given and improved my Accessibility to 90%.
 
 ## Comment:
 
