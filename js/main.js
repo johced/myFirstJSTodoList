@@ -57,11 +57,11 @@ function renderHTML() {
 				checkToggle(toDoList[i]);
 			});
 
-			let deleteButton = document.createElement('button');
-			deleteButton.id = 'deleteBtn';
-			deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-			deleteButton.addEventListener('click', () => {
-				deleteToDo(toDoList[i]);
+			let removeButton = document.createElement('button');
+			removeButton.id = 'removeBtn';
+			removeButton.innerHTML = '<i class="fas fa-times"></i>';
+			removeButton.addEventListener('click', () => {
+				removeToDo(toDoList[i]);
 			});
 
 			let sortButton = document.createElement('button');
@@ -90,12 +90,12 @@ function renderHTML() {
 			spanMove.appendChild(sortButton);
 
 			liElement.appendChild(spanDelete);
-			spanDelete.appendChild(deleteButton);
+			spanDelete.appendChild(removeButton);
 		}
 	}
 }
 
-function deleteToDo(toDo) {
+function removeToDo(toDo) {
 	toDo.complete = !toDo.complete;
 	if (toDo.complete == true) {
 		let test = toDoList.indexOf(toDo);
@@ -105,18 +105,18 @@ function deleteToDo(toDo) {
 	}
 }
 
-function resetDelete() {
+function bringBackRemovedTodo() {
 	for (let i = toDoList.length - 1; i >= 0; i--) {
 		if (toDoList[i].complete == false) {
 			alert('You have nothing in trash');
 			break;
 		} else {
-			let crap = toDoList[i];
+			let toDo = toDoList[i];
 			if (toDoList[i].complete == true) {
-				let move = toDoList.indexOf(crap);
+				let move = toDoList.indexOf(toDo);
 				toDoList.splice(move, 1);
-				toDoList.unshift(crap);
-				crap.complete = !crap.complete;
+				toDoList.unshift(toDo);
+				toDo.complete = !toDo.complete;
 				renderHTML();
 				break;
 			}
@@ -124,7 +124,7 @@ function resetDelete() {
 	}
 }
 
-function toiletDelete() {
+function deleteToDo() {
 	let warning = confirm('Are you sure you want to delete Everything?');
 	if (warning == true) {
 		for (let i = 0; toDoList.length; i++) {
