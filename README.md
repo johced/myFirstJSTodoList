@@ -13,6 +13,8 @@ Also in this school assignment we are learning how to use Github. I created bran
 - Delete Todo's
 - Sort ToDo's (move pressed ToDo => top of the list)
 
+**Added localStorage to my To Do List**
+
 ## Structure:
 
 - camelCase
