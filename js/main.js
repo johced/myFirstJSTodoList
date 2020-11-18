@@ -6,24 +6,31 @@ class Todo {
 		this.checked = checked;
 	}
 }
+// Get from localStorage
+let toDoListAsTextFromLS = localStorage.getItem('toDoList');
+let toDoListFromLS = JSON.parse(toDoListAsTextFromLS);
 
 let toDoList = [];
 
 window.onload = function () {
-	preSets();
 	document.getElementById('addBtn').addEventListener('click', createTodo);
 	document.getElementById('myInput').addEventListener('keypress', e => e.keyCode === 13 && createTodo());
+
+	renderHTMLFromLS();
+	preSets();
 	renderHTML();
 };
 
 function preSets() {
-	let toDo = new Todo('Example 1', 1, false, false);
-	let toDo2 = new Todo('Example 2', 2, false, false);
-	let toDo3 = new Todo('Example 3', 3, false, false);
+	if (toDoList.length === 0) {
+		let toDo = new Todo('Example 1', 1, false, false);
+		let toDo2 = new Todo('Example 2', 2, false, false);
+		let toDo3 = new Todo('Example 3', 3, false, false);
 
-	toDoList.push(toDo);
-	toDoList.push(toDo2);
-	toDoList.push(toDo3);
+		toDoList.push(toDo);
+		toDoList.push(toDo2);
+		toDoList.push(toDo3);
+	}
 }
 
 function createTodo() {
@@ -35,13 +42,24 @@ function createTodo() {
 		let toDo = new Todo(newTodo, new Date().getTime(), false, false);
 		toDoList.push(toDo);
 
+		// Saving to localStorage
+		let toDoListAsText = JSON.stringify(toDoList);
+		localStorage.setItem('toDoList', toDoListAsText);
+
 		renderHTML();
 		document.getElementById('myInput').value = '';
 	}
 }
 
+function renderHTMLFromLS() {
+	for (let i = 0; i < toDoListFromLS.length; i++) {
+		toDoList.push(toDoListFromLS[i]);
+		renderHTML();
+	}
+}
+
 function renderHTML() {
-	let ulElement = document.getElementById('toDoList');
+	let ulElement = document.getElementById('todoUlList');
 	ulElement.innerHTML = '';
 
 	for (let i = 0; i < toDoList.length; i++) {
@@ -103,6 +121,9 @@ function removeToDo(toDo) {
 		toDoList.splice(test, 1);
 		toDoList.push(toDo);
 		renderHTML();
+		// Test
+		let toDoListAsText = JSON.stringify(toDoList);
+		localStorage.setItem('toDoList', toDoListAsText);
 	}
 }
 
@@ -119,6 +140,9 @@ function bringBackRemovedTodo() {
 				toDoList.unshift(toDo);
 				toDo.complete = !toDo.complete;
 				renderHTML();
+				// Saving to localStorage
+				let toDoListAsText = JSON.stringify(toDoList);
+				localStorage.setItem('toDoList', toDoListAsText);
 				break;
 			}
 		}
@@ -128,8 +152,11 @@ function bringBackRemovedTodo() {
 function deleteToDo() {
 	let warning = confirm('Are you sure you want to delete Everything?');
 	if (warning == true) {
-		for (let i = 0; toDoList.length; i++) {
+		for (let i = 0; i < toDoList.length; i++) {
 			toDoList.splice(i);
+			// Saving to localStorage
+			let toDoListAsText = JSON.stringify(toDoList);
+			localStorage.setItem('toDoList', toDoListAsText);
 		}
 		renderHTML();
 	} else {
@@ -139,6 +166,9 @@ function deleteToDo() {
 
 function checkToggle(toggleMe) {
 	toggleMe.checked = !toggleMe.checked;
+	// Saving to localStorage
+	let toDoListAsText = JSON.stringify(toDoList);
+	localStorage.setItem('toDoList', toDoListAsText);
 }
 
 function sortTodo(toDo) {
@@ -146,6 +176,9 @@ function sortTodo(toDo) {
 		if (toDoList[i] == toDo) {
 			toDoList.splice(i, 1);
 			toDoList.splice(0, 0, toDo);
+			// Saving to localStorage
+			let toDoListAsText = JSON.stringify(toDoList);
+			localStorage.setItem('toDoList', toDoListAsText);
 		}
 	}
 	renderHTML();
