@@ -178,6 +178,7 @@ function sortTodo(toDo) {
 		if (toDoList[i] == toDo) {
 			toDoList.splice(i, 1);
 			toDoList.splice(0, 0, toDo);
+			// splice(i +1, 0, itemsToAdd) move only one up
 			// Saving to localStorage
 			let toDoListAsText = JSON.stringify(toDoList);
 			localStorage.setItem('toDoList', toDoListAsText);
