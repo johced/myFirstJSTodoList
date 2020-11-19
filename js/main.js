@@ -11,7 +11,7 @@ let toDoList = [];
 
 window.onload = function () {
 	document.getElementById('addBtn').addEventListener('click', createTodo);
-	document.getElementById('myInput').addEventListener('keypress', e => e.keyCode === 13 && createTodo());
+	document.getElementById('myInput').addEventListener('keypress', e => e.key === 'Enter' && createTodo());
 
 	bringBackObjectsFromLS();
 	preSets();
