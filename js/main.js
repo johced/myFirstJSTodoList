@@ -16,7 +16,7 @@ window.onload = function () {
 	document.getElementById('addBtn').addEventListener('click', createTodo);
 	document.getElementById('myInput').addEventListener('keypress', e => e.keyCode === 13 && createTodo());
 
-	renderHTMLFromLS();
+	bringBackObjectsFromLS();
 	preSets();
 	renderHTML();
 };
@@ -51,9 +51,10 @@ function createTodo() {
 	}
 }
 
-function renderHTMLFromLS() {
+function bringBackObjectsFromLS() {
 	for (let i = 0; i < toDoListFromLS.length; i++) {
-		toDoList.push(toDoListFromLS[i]);
+		let todo = new Todo(toDoListFromLS[i].name, toDoListFromLS[i].id, toDoListFromLS[i].complete, toDoListFromLS[i].checked);
+		toDoList.push(todo);
 		renderHTML();
 	}
 }
