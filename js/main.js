@@ -51,11 +51,12 @@ function createTodo() {
 function bringBackObjectsFromLS() {
 	let toDoListAsTextFromLS = localStorage.getItem('toDoList');
 	let toDoListFromLS = JSON.parse(toDoListAsTextFromLS);
-
-	for (let i = 0; i < toDoListFromLS.length; i++) {
-		let todo = new Todo(toDoListFromLS[i].name, toDoListFromLS[i].id, toDoListFromLS[i].complete, toDoListFromLS[i].checked);
-		toDoList.push(todo);
-		renderHTML();
+	if (toDoListFromLS !== null) {
+		for (let i = 0; i < toDoListFromLS.length; i++) {
+			let todo = new Todo(toDoListFromLS[i].name, toDoListFromLS[i].id, toDoListFromLS[i].complete, toDoListFromLS[i].checked);
+			toDoList.push(todo);
+			renderHTML();
+		}
 	}
 }
 
@@ -183,4 +184,9 @@ function sortTodo(toDo) {
 		}
 	}
 	renderHTML();
+}
+
+function readmeButton() {
+	let myAboutWindow = window.open('README.md', '', 'width=400, height=600');
+	myAboutWindow.blur();
 }

@@ -29,6 +29,7 @@ Also in this school assignment we are learning how to use Github. I created bran
 
 We learned about Lighthouse: 100% Performance. 65% Accessibility. 100% Best Practices. 91% Seo.
 I used the information given and improved my Accessibility to 90%.
+20201119: 100% Performance, 90% Accessibility, 100% Best Practises, 100% SEO.
 
 ## Comment:
 
