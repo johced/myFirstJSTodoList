@@ -6,9 +6,6 @@ class Todo {
 		this.checked = checked;
 	}
 }
-// Get from localStorage
-let toDoListAsTextFromLS = localStorage.getItem('toDoList');
-let toDoListFromLS = JSON.parse(toDoListAsTextFromLS);
 
 let toDoList = [];
 
@@ -40,7 +37,7 @@ function createTodo() {
 		alert('You must write something');
 	} else {
 		let toDo = new Todo(newTodo, new Date().getTime(), false, false);
-		toDoList.push(toDo);
+		toDoList.unshift(toDo);
 
 		// Saving to localStorage
 		let toDoListAsText = JSON.stringify(toDoList);
@@ -52,6 +49,9 @@ function createTodo() {
 }
 
 function bringBackObjectsFromLS() {
+	let toDoListAsTextFromLS = localStorage.getItem('toDoList');
+	let toDoListFromLS = JSON.parse(toDoListAsTextFromLS);
+
 	for (let i = 0; i < toDoListFromLS.length; i++) {
 		let todo = new Todo(toDoListFromLS[i].name, toDoListFromLS[i].id, toDoListFromLS[i].complete, toDoListFromLS[i].checked);
 		toDoList.push(todo);
