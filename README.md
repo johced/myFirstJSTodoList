@@ -7,10 +7,13 @@ Also in this school assignment we are learning how to use Github. I created bran
 
 3 hardcoded examples in the todolist.
 
-- Add New ToDo
+- Add New ToDo ('Enter' key is activated)
 - Remove ToDo
+  (Remove from screen - toggle complete value false/true, push to last i position in array)
 - Reset Removed ToDo's
+  (toggle complete value true/false, splice, unshift to place object to first position in array)
 - Delete Todo's
+  (Empties array)
 - Sort ToDo's (move pressed ToDo => top of the list)
 
 **Added localStorage to my To Do List**
